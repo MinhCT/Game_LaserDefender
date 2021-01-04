@@ -1,0 +1,23 @@
+﻿using UnityEngine;
+
+public class MusicPlayer : MonoBehaviour
+{
+    private void Awake()
+    {
+        SetUpSingleton();
+    }
+
+    private void SetUpSingleton()
+    {
+        int gameStatusCount = FindObjectsOfType(GetType()).Length;
+        if (gameStatusCount > 1)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+}
